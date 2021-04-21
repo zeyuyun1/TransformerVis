@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('--dictionary_dir', type=str, default = './dictionaries/example_dict_long.npy',help=
+    parser.add_argument('--dictionary_dir', type=str, default = './dictionaries/example_dict_short.npy',help=
                         'This is path for the a trained dictionary using train.py. The trained dictionary is a shape (hidden_state,dictionary_size) array saved as npy file.')
     
     parser.add_argument('--outfile_dir', type=str, default = './top_activate_examples/', help=
