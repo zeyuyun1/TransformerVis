@@ -21,3 +21,9 @@ To infer the sparse code and save the top activated examples for each transforme
 ```
 python inference_efficient.py --dictionary_dir ./the_path_for_your_trained_dictionary
 ```
+
+(Optional) To use LIME to generate the attribution (color) map, run 
+
+```
+python write_color.py --dictionary_dir ./the_path_for_your_trained_dictionary --example_dir ./the_path_of_your_top_activated_examples
+```
