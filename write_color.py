@@ -15,6 +15,9 @@ if __name__ == '__main__':
                     'The regularization factor for sparse coding. You should use the same one you used in training')
     parser.add_argument('--top_n_activation', type=int, default=40, help=
                         'This number indicates how many examples do we collect for each transformer factor. By default, we collect top 200 activated examples.')
+    parser.add_argument('--dictionary_dir', type=str, default = './dictionaries/example_dict_long.npy',help=
+                        'This is path for the a trained dictionary using train.py. The trained dictionary is a shape (hidden_state,dictionary_size) array saved as npy file.')
+    
     folder = './top_activate_examples_w_color'
     args = parser.parse_args()
     model_version = 'bert-base-uncased'
@@ -26,7 +29,7 @@ if __name__ == '__main__':
     device = torch.device("cuda:{}".format(args.gpu_id))
     model = model.to(device)
     example_list = np.load(args.example_dir,allow_pickle=True)[None][0]
-    basis1 = torch.from_numpy(np.load('./dictionaries/example_dict_long.npy')).to(device)
+    basis1 = torch.from_numpy(np.load(args.dictionary_dir)).to(device)
 
     with open(folder + '/l_{}.txt'.format(args.l),'w') as the_file:
         for sparse_dim in tqdm(range(len(example_list))):
