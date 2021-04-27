@@ -31,3 +31,16 @@ python inference_efficient.py --dictionary_dir ./the_path_for_your_trained_dicti
 ```
 python write_color.py --dictionary_dir ./the_path_for_your_trained_dictionary --example_dir ./the_path_of_your_top_activated_examples
 ```
+
+If you find this repo useful, please consider to cite our work:
+```
+@proceedings{Yun2021TransformerVis,
+    title={Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors},
+    author={Yun, Zeyu and Chen, Yubei and Olshausen, Bruno A and LeCun, Yann},
+    booktitle = "Proceedings of Deep Learning Inside Out (DeeLIO) NAACL: The Second Workshop on Knowledge Extraction and Integration for Deep Learning Architectures",
+    year = "2021",
+    publisher = "Association for Computational Linguistics",
+}
+```
+
+
