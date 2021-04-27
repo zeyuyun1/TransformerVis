@@ -1,10 +1,14 @@
 # Transformer visualization via dictionary learning
 
-This repo contains the code for paper: [<em>Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors</em>](https://arxiv.org/abs/2103.15949)
+This repo contains the code for paper: [<em>Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors</em>](https://arxiv.org/abs/2103.15949) by Zeyu Yun*, Yubei Chen*, Bruno A Olshausen, and Yann LeCun ([DeeLIO Workshop](https://sites.google.com/view/deelio-ws/)@NAACL 2021).
+
+## Demo
+
+![image](vis.png)
 
 The Demo is here: [Demo](https://transformervis.github.io/transformervis/)
 
-Instruction:
+## Instruction
 
 To visualize the hidden states for transformer factor. We need to first train a dictionary and then infer the sparse code using these dictionary.
 
@@ -31,6 +35,8 @@ python inference_efficient.py --dictionary_dir ./the_path_for_your_trained_dicti
 ```
 python write_color.py --dictionary_dir ./the_path_for_your_trained_dictionary --example_dir ./the_path_of_your_top_activated_examples
 ```
+
+## Citation
 
 If you find this repo useful, please consider to cite our work:
 ```
