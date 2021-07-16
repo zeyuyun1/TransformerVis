@@ -1,5 +1,6 @@
 import argparse
 import numpy as np
+import os
 import sys
 
 # import sparsify
@@ -146,4 +147,6 @@ if __name__ == '__main__':
             good_examples_contents[d] = merge_two(example_dim_old(X_sparse_set,d,words,word_to_sentence,sentences_str,n=args.top_n_activation),good_examples_contents[d])[:args.top_n_activation]
             
 #       save the examples, which are in python dictionaries
-        np.save(args.outfile_dir + 'example_l_{}.npy'.format(args.l), good_examples_contents) 
+        if not os.path.exists(args.outfile_dir):
+            os.makedirs(args.outfile_dir)
+        np.save(args.outfile_dir + 'example_l_{}.npy'.format(args.l), good_examples_contents)
