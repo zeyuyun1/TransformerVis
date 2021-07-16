@@ -104,7 +104,7 @@ if __name__ == '__main__':
     ActL1 = torch.zeros(args.PHI_NUM).to(device)
     signalEnergy = 0.
     noiseEnergy = 0.
-    X_att_set_temp = []
+    X_set_temp = []
     frequency_temp = []
     
 #   This is the layers in transformer model that we collect hidden states. In the paper, we suggest to collect hidden states from every layers, i.e. 0,1,2,...,11. In the actual implementation, we collect hidden states from every other layers to reduce computation.

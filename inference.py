@@ -1,5 +1,6 @@
 import argparse
 import numpy as np
+import os
 import sys
 
 # import sparsify
@@ -51,21 +52,21 @@ if __name__ == '__main__':
     parser.add_argument('--shard_size', type=int, default=1000, help=
                         'TLDR: Make this number small if you have a memory error. This is number that indicates how much data (hidden states) that fits in your RAM at once. Recall that we are calculating the top-activated examples, so we need to calculate the top-n activations over the sparse code of all word vector. This is a really large number. Thus, we split this calculating max process in shards.')
     
-    parser.add_argument('--reg', type=float, help=
+    parser.add_argument('--reg', type=float, default=0.3, help=
                         'The regularization factor for sparse coding. You should use the same one you used in training')
     
     parser.add_argument('--top_n_activation', type=int, default=500, help=
                         'This number indicates how many examples do we collect for each transformer factor. By default, we collect top 200 activated examples.')
 #     dict_lcomplete_base_2500_epoch_1_d2500_f.npy
 
-
+    parser.add_argument('--model_version', type=str, default='bert-base-uncased', help='The model you want to use for your transformer model.')    
 
     args = parser.parse_args()
     
 #     laod model and tokenizer
-    model_version = 'bert-base-uncased'
+    model_version = args.model_version
     tokenizer = BertTokenizerFast.from_pretrained(model_version)
-    model = BertModel.from_pretrained(model_version)
+    model = BertModel.from_pretrained(model_version)   
     torch.cuda.set_device(args.gpu_id)
     device = torch.device("cuda:{}".format(args.gpu_id))
     model = model.to(device)
@@ -146,4 +147,6 @@ if __name__ == '__main__':
             good_examples_contents[d] = merge_two(example_dim_old(X_sparse_set,d,words,word_to_sentence,sentences_str,n=args.top_n_activation),good_examples_contents[d])[:args.top_n_activation]
             
 #       save the examples, which are in python dictionaries
-        np.save(args.outfile_dir + 'example_l_{}.npy'.format(args.l), good_examples_contents) 
+        if not os.path.exists(args.outfile_dir):
+            os.makedirs(args.outfile_dir)
+        np.save(args.outfile_dir + 'example_l_{}.npy'.format(args.l), good_examples_contents)
