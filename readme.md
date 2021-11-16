@@ -4,9 +4,10 @@ This repo contains the code for paper: [<em>Transformer visualization via dictio
 
 ## Demo
 
+The Demo is here: [Demo](https://transformervis.github.io/transformervis/)
+
 ![image](vis.png)
 
-The Demo is here: [Demo](https://transformervis.github.io/transformervis/)
 
 ## Instruction
 
