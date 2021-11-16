@@ -117,6 +117,10 @@ def decode(token,ids):
     return sent 
 
 def generate_salient_map(model,l,basis1,text_instance,word_index,sparse_dim,num_features,num_samples,BATCH_SIZE_1,BATCH_SIZE_2,reg,feature_selection='auto'):
+#     this function is modified from the LimeTextExplainer function from the lime repo:
+#     https://github.com/marcotcr/lime/blob/a2c7a6fb70bce2e089cb146a31f483bf218875eb/lime/lime_text.py#L301
+#     I modified it to fit the huggingface style bert tokenizer.
+
     model_regressor=None
     explainer = LimeTextExplainer()
     encode = tokenizer(text_instance, add_special_tokens=False)['input_ids']
